@@ -13,6 +13,13 @@ function App() {
 
   const { register, handleSubmit, setValue, watch } = useForm()
 
+  const openViewer = async () => {
+    const params = new URLSearchParams({
+      url: 'https://www.youtube.com/embed/rggg1mrQTMY',
+    }).toString()
+    await invoke('create_window', { params })
+  }
+
   const onSubmit = (values: any) => {
     // https://www.youtube.com/watch?v=4iN84gLicnM -> errado
     // https://www.youtube.com/embed/rggg1mrQTMY -> certo
@@ -23,7 +30,8 @@ function App() {
 
     // https://docs.google.com/document/d/1aJTx22S6WyqoNE6prNiU0qtRRtrP4QqJFEsbw8BKppA/edit?usp=sharing
     console.log('Values', values)
-    invoke('create_window')
+    // invoke('create_window')
+    openViewer()
     // setIframeOpen(true)
   }
 

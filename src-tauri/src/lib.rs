@@ -7,11 +7,15 @@ fn greet(name: &str) -> String {
 }
 
 #[tauri::command]
-async fn create_window(app: tauri::AppHandle) {
-   tauri::WebviewWindowBuilder::new(&app, "label", tauri::WebviewUrl::App("viewer.html".into()))
-    .build()
-    .unwrap();
+async fn create_window(app: tauri::AppHandle, params: String) {
+    let url = format!("viewer.html?{}", params);
+
+    tauri::WebviewWindowBuilder::new(&app, "label", tauri::WebviewUrl::App(url.into()))
+        .title("Viewer")
+        .build()
+        .unwrap();
 }
+
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
