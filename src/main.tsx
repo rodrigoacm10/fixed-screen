@@ -1,9 +1,12 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import App from "./App";
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import App from './App'
+import Viewer from './components/Viewer'
 
-ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
+const currentUrl = window.location.pathname
+
+ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <App />
+    {currentUrl.includes('viewer.html') ? <Viewer /> : <App />}
   </React.StrictMode>,
-);
+)
