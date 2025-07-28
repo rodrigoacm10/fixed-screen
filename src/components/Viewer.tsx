@@ -13,15 +13,17 @@ export default function Viewer() {
     // <>
     //   {iframeOpen && (
     <div className="relative w-screen h-screen">
-      <p>Mensagem recebida: {message}</p>
-      <iframe
-        onMouseMove={() => console.log('MOUVE')}
-        className="absolute top-0 left-0 w-full h-full"
-        src="https://www.youtube.com/embed/rggg1mrQTMY"
-        title="YouTube video player"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowFullScreen
-      ></iframe>
+      {message && (
+        <iframe
+          onMouseMove={() => console.log('MOUVE')}
+          className="absolute top-0 left-0 w-full h-full"
+          src={message}
+          // src="https://www.youtube.com/embed/rggg1mrQTMY"
+          title="YouTube video player"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        ></iframe>
+      )}
     </div>
     //   )}
     // </>
