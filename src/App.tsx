@@ -17,6 +17,8 @@ function App() {
   }
 
   const onSubmit = (values: any) => {
+    console.log('VLUES', values)
+
     const getFunc = types.find((type) => type.type === values.type)
       ?.getUrl as any
     const urlToPass = getFunc(values.url) as string

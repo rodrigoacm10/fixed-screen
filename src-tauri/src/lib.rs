@@ -1,4 +1,5 @@
 // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
+use std::time::{SystemTime, UNIX_EPOCH}; 
 
 #[tauri::command]
 fn greet(name: &str) -> String {
@@ -8,9 +9,16 @@ fn greet(name: &str) -> String {
 #[tauri::command]
 async fn create_window(app: tauri::AppHandle, params: String) {
     let url = format!("viewer.html?{}", params);
+    
+    let timestamp = SystemTime::now()
+    .duration_since(UNIX_EPOCH)
+    .unwrap()
+    .as_millis();
+    let label = format!("label-{}", timestamp);
 
-    tauri::WebviewWindowBuilder::new(&app, "label", tauri::WebviewUrl::App(url.into()))
+    tauri::WebviewWindowBuilder::new(&app, &label, tauri::WebviewUrl::App(url.into()))
         .title("Viewer")
+        .always_on_top(true)
         .build()
         .unwrap();
 }
