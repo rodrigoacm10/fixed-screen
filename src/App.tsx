@@ -1,13 +1,17 @@
 import { invoke } from '@tauri-apps/api/core'
 import './App.css'
 import { useForm } from 'react-hook-form'
-import { types } from './utils/types'
+import { handleTypes, HandleTypesType } from './utils/handleTypes'
 import { useState } from 'react'
+import { urlSchema, UrlSchemaType } from './schemas/urlSchema'
+import { zodResolver } from '@hookform/resolvers/zod'
 
 function App() {
   const [placeholder, setPlaceholder] = useState('')
 
-  const { register, handleSubmit, setValue, watch } = useForm()
+  const { register, handleSubmit, setValue, watch } = useForm<UrlSchemaType>({
+    resolver: zodResolver(urlSchema),
+  })
 
   const openViewer = async (url: string) => {
     const params = new URLSearchParams({
@@ -16,20 +20,25 @@ function App() {
     await invoke('create_window', { params })
   }
 
-  const onSubmit = (values: any) => {
-    console.log('VLUES', values)
+  const onSubmit = (values: UrlSchemaType) => {
+    if (!values.type || !values.url) throw new Error('invalid submit')
 
-    const getFunc = types.find((type) => type.type === values.type)
-      ?.getUrl as any
-    const urlToPass = getFunc(values.url) as string
+    const handleType = handleTypes.find(
+      (type) => type.type === (values.type as HandleTypesType),
+    )
+    if (!handleType) throw new Error('invalid submit')
+
+    const urlToPass = handleType.getUrl(values.url)
     openViewer(urlToPass)
+
+    setValue('url', '')
   }
 
   const type = watch('type')
 
   return (
-    <main className="min-h-screen min-w-screen bg-red-300 flex">
-      <div className="flex-1 bg-black flex items-center justify-center flex-col">
+    <main className="min-h-screen min-w-screen bg-red-30 flex">
+      <div className="flex-1 bg-blac flex items-center justify-center flex-col">
         <>
           <h1 className="text-white bg-red-500 text-center mb-2">
             Insira uma URL
@@ -39,20 +48,29 @@ function App() {
             onSubmit={handleSubmit(onSubmit)}
           >
             {type && (
-              <div className="flex gap-2 relative bg-black">
+              <div className="flex gap-2 bg-black">
+                <button
+                  type="button"
+                  onClick={() => setValue('type', '')}
+                  className="cursor-pointer flex-1 p-2 bg-red-400 rounded-md focus:outline-none focus:ring-2 focus:ring-white"
+                >
+                  voltar
+                </button>
                 <input
                   {...register('url')}
                   placeholder={`Ex: ${placeholder}`}
                   className="bg-red-200 rounded-md px-4 py-2"
                 />
-                <button className="absolute top-1/2 -right-10">arrow</button>
+                <button type="submit" className="text-white">
+                  arrow
+                </button>
               </div>
             )}
 
             <div className="flex flex-wrap gap-2">
               {/* aki vai ser o map */}
               {!type &&
-                types.map((obj) => (
+                handleTypes.map((obj) => (
                   <button
                     type="button"
                     onClick={() => {
@@ -67,18 +85,6 @@ function App() {
                     </div>
                   </button>
                 ))}
-              {type && (
-                <button
-                  type="button"
-                  onClick={() => setValue('type', '')}
-                  className="cursor-pointer flex-1 p-2 bg-red-400 rounded-md focus:outline-none focus:ring-2 focus:ring-white"
-                >
-                  <div className="text-white text-center">
-                    <h2 className="font-bold text-lg">Voltar</h2>
-                    {/* <p className="text-sm">insira url de um vídeo</p> */}
-                  </div>
-                </button>
-              )}
             </div>
           </form>
         </>

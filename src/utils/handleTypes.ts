@@ -1,4 +1,4 @@
-export const types = [
+export const handleTypes = [
   {
     type: 'random',
     title: 'Random',
@@ -22,7 +22,7 @@ export const types = [
       // https://www.youtube.com/watch?v=4iN84gLicnM -> errado
       // https://www.youtube.com/embed/rggg1mrQTMY -> certo
 
-      const codeYt = url.split('=')[1]
+      const codeYt = url.split('watch?v=')[1].slice(0, 11)
       return `https://www.youtube.com/embed/${codeYt}`
     },
   },
@@ -44,4 +44,6 @@ export const types = [
       }`
     },
   },
-]
+] as const
+
+export type HandleTypesType = (typeof handleTypes)[number]['type']
