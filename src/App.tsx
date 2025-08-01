@@ -37,7 +37,7 @@ function App() {
   const type = watch('type')
 
   return (
-    <main className="min-h-screen min-w-screen bg-red-30 flex">
+    <main className="min-h-screen min-w-screen bg-black/65 flex">
       <div className="flex-1 bg-blac flex items-center justify-center flex-col">
         <>
           <h1 className="text-white bg-red-500 text-center mb-2">
