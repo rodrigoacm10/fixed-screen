@@ -23,16 +23,16 @@ async function setupTray() {
   const options = {
     menu,
     menuOnLeftClick: true,
-    // icon: await defaultWindowIcon(),
+    icon: '../src-tauri/icons/32x32.png',
     action: async (event: TrayIconEvent) => {
       switch (event.type) {
         case 'Click':
-          invoke('open_app')
           console.log(
             `mouse ${event.button} button pressed, state: ${event.buttonState}`,
           )
           break
         case 'DoubleClick':
+          invoke('open_app')
           console.log(`mouse ${event.button} button double pressed, aa`)
           break
         case 'Enter':

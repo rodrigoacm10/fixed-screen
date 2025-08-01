@@ -13,12 +13,13 @@
     "windows": [
       {
         "title": "fixed-screen",
-        "width": 800,
-        "height": 600,
+        "width": 200,
+        "height": 300,
         "visible": false,
         "skipTaskbar": true,
         "alwaysOnTop": true,
-        "transparent": true
+        "transparent": true,
+        "decorations": false
       }
     ],
     "security": {
