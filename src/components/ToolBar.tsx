@@ -4,7 +4,7 @@ export const ToolBar = () => {
   const appWindow = getCurrentWindow()
 
   return (
-    <div className="fixed top-0 left-0 right-0 h-[30px] bg-[#329ea3] select-none grid grid-cols-[auto_max-content]">
+    <div className="fixed top-0 left-0 right-0 h-[30px] bg-black/75  select-none grid grid-cols-[auto_max-content]">
       <div data-tauri-drag-region></div>
       <div className="flex">
         <button
@@ -17,6 +17,7 @@ export const ToolBar = () => {
             xmlns="http://www.w3.org/2000/svg"
             width="24"
             height="24"
+            color="#ffffff"
             viewBox="0 0 24 24"
           >
             <path fill="currentColor" d="M19 13H5v-2h14z" />
@@ -32,6 +33,7 @@ export const ToolBar = () => {
             xmlns="http://www.w3.org/2000/svg"
             width="24"
             height="24"
+            color="#ffffff"
             viewBox="0 0 24 24"
           >
             <path fill="currentColor" d="M4 4h16v16H4zm2 4v10h12V8z" />
@@ -47,6 +49,7 @@ export const ToolBar = () => {
             xmlns="http://www.w3.org/2000/svg"
             width="24"
             height="24"
+            color="#ffffff"
             viewBox="0 0 24 24"
           >
             <path

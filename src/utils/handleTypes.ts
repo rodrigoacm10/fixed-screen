@@ -1,3 +1,7 @@
+import { RandomIcon } from '../components/icons/RandomIcon'
+import { TwitchIcon } from '../components/icons/TwitchIcon'
+import { YoutubeIcon } from '../components/icons/YoutubeIcon'
+
 export const handleTypes = [
   {
     type: 'random',
@@ -5,7 +9,7 @@ export const handleTypes = [
     subTitle: 'Insira url de um vídeo',
     placeholder:
       'https://docs.google.com/document/d/1aJTx22S6WyqoNE6prNiU0qtRRtrP4QqJFEsbw8BKppA/edit?usp=sharing',
-    Icon: '',
+    Icon: RandomIcon,
     getUrl: (url: string) => {
       // https://docs.google.com/document/d/1aJTx22S6WyqoNE6prNiU0qtRRtrP4QqJFEsbw8BKppA/edit?usp=sharing
 
@@ -17,7 +21,7 @@ export const handleTypes = [
     title: 'Youtube',
     subTitle: 'Insira url de um vídeo',
     placeholder: 'https://www.youtube.com/watch?v=4iN84gLicnM',
-    Icon: '',
+    Icon: YoutubeIcon,
     getUrl: (url: string) => {
       // https://www.youtube.com/watch?v=4iN84gLicnM -> errado
       // https://www.youtube.com/embed/rggg1mrQTMY -> certo
@@ -31,7 +35,7 @@ export const handleTypes = [
     title: 'Twitch',
     subTitle: 'Insira url de um vídeo',
     placeholder: 'https://www.twitch.tv/baiano',
-    Icon: '',
+    Icon: TwitchIcon,
     getUrl: (url: string) => {
       // https://www.twitch.tv/baiano - errado
       // https://player.twitch.tv/?channel=baiano&parent=localhost -> certo video

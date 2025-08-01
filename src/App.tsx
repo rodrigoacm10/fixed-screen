@@ -41,54 +41,61 @@ function App() {
     <>
       <main className="min-h-screen min-w-screen bg-black/75 flex flex-col">
         <ToolBar />
-        <div className="flex-1 bg-blac flex items-center justify-center flex-col">
+        <div className="flex-1 flex items-center justify-center flex-col">
           <>
-            <h1 className="text-white bg-red-500 text-center mb-2">
-              Insira uma URL
+            <h1 className="text-white bg-red-500 text-center mb-2 font-bold">
+              URL Type
             </h1>
             <form
               className="bg-blue-300 w-full flex flex-col items-center justify-center gap-4"
               onSubmit={handleSubmit(onSubmit)}
             >
               {type && (
-                <div className="flex gap-2 bg-black">
-                  <button
-                    type="button"
-                    onClick={() => setValue('type', '')}
-                    className="cursor-pointer flex-1 p-2 bg-red-400 rounded-md focus:outline-none focus:ring-2 focus:ring-white"
-                  >
-                    voltar
-                  </button>
+                <div className="flex flex-col gap-2 bg-black">
                   <input
                     {...register('url')}
                     placeholder={`Ex: ${placeholder}`}
                     className="bg-red-200 rounded-md px-4 py-2"
                   />
-                  <button type="submit" className="text-white">
-                    arrow
-                  </button>
+                  <div className="flex-1 grid grid-cols-2 gap-2 justify-between">
+                    <button
+                      type="button"
+                      onClick={() => setValue('type', '')}
+                      className="flex-1 p-2 bg-red-400 rounded-md"
+                    >
+                      voltar
+                    </button>
+                    <button
+                      type="submit"
+                      className="flex-1 bg-red-400 rounded-md"
+                    >
+                      arrow
+                    </button>
+                  </div>
                 </div>
               )}
 
-              <div className="flex flex-wrap gap-2">
-                {/* aki vai ser o map */}
-                {!type &&
-                  handleTypes.map((obj) => (
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setValue('type', obj.type)
-                        setPlaceholder(obj.placeholder)
-                      }}
-                      className="cursor-pointer flex-1 p-2 bg-red-400 rounded-md focus:outline-none focus:ring-2 focus:ring-white"
-                    >
-                      <div className="text-white text-center">
-                        <h2 className="font-bold text-lg">{obj.title}</h2>
-                        <p className="text-sm">{obj.subTitle}</p>
-                      </div>
-                    </button>
-                  ))}
-              </div>
+              {!type && (
+                <div className="flex flex-wrap gap-2">
+                  {handleTypes.map((obj) => {
+                    const { Icon } = obj
+
+                    return (
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setValue('type', obj.type)
+                          setPlaceholder(obj.placeholder)
+                        }}
+                        className="w-[120px] h-[75px] p-2 cursor-pointer flex-1 bg-red-400 rounded-md focus:outline-none focus:ring-2 focus:ring-white flex flex-col justify-center items-center"
+                      >
+                        <Icon />
+                        <h2 className="font-bold text-[16px]">{obj.title}</h2>
+                      </button>
+                    )
+                  })}
+                </div>
+              )}
             </form>
           </>
         </div>

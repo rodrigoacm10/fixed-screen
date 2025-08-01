@@ -13,8 +13,9 @@
     "windows": [
       {
         "title": "fixed-screen",
-        "width": 200,
-        "height": 300,
+        "width": 350,
+        "height": 175,
+        "resizable": false,
         "visible": false,
         "skipTaskbar": true,
         "alwaysOnTop": true,

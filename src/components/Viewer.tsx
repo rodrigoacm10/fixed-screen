@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { ToolBar } from './ToolBar'
 
 export default function Viewer() {
   const [message, setMessage] = useState('')
@@ -12,16 +13,15 @@ export default function Viewer() {
   return (
     // <>
     //   {iframeOpen && (
-    <div className="relative w-screen h-screen">
+    <div className="flex w-screen h-screen">
+      <ToolBar />
       {message && (
         <iframe
           onMouseMove={() => console.log('MOUVE')}
-          className="absolute top-0 left-0 w-full h-full"
+          className="flex-1 mt-[30px]"
           src={message}
           // src="https://www.youtube.com/embed/rggg1mrQTMY"
           title="YouTube video player"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
         ></iframe>
       )}
     </div>
