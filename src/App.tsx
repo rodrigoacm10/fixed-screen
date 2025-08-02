@@ -43,40 +43,38 @@ function App() {
         <ToolBar />
         <div className="flex-1 flex items-center justify-center flex-col">
           <>
-            <h1 className="text-white bg-red-500 text-center mb-2 font-bold">
-              URL Type
-            </h1>
+            <h1 className="text-white text-center mb-2 font-bold">URL Type</h1>
             <form
-              className="bg-blue-300 w-full flex flex-col items-center justify-center gap-4"
+              className="w-full flex flex-col items-center justify-center gap-4"
               onSubmit={handleSubmit(onSubmit)}
             >
               {type && (
-                <div className="flex flex-col gap-2 bg-black">
+                <div className="flex flex-col gap-2 w-full px-2">
                   <input
                     {...register('url')}
                     placeholder={`Ex: ${placeholder}`}
-                    className="bg-red-200 rounded-md px-4 py-2"
+                    className="rounded-md px-4 py-2 text-white placeholder:text-[#ffffff]/10 border-[#ffff]/10 border-[1px]"
                   />
                   <div className="flex-1 grid grid-cols-2 gap-2 justify-between">
                     <button
                       type="button"
                       onClick={() => setValue('type', '')}
-                      className="flex-1 p-2 bg-red-400 rounded-md"
+                      className="flex-1 p-2 bg-[#333030] text-white rounded-md"
                     >
-                      voltar
+                      back
                     </button>
                     <button
                       type="submit"
-                      className="flex-1 bg-red-400 rounded-md"
+                      className="flex-1 bg-[#333030] text-white  rounded-md"
                     >
-                      arrow
+                      submit
                     </button>
                   </div>
                 </div>
               )}
 
               {!type && (
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2 p-2">
                   {handleTypes.map((obj) => {
                     const { Icon } = obj
 
@@ -87,10 +85,12 @@ function App() {
                           setValue('type', obj.type)
                           setPlaceholder(obj.placeholder)
                         }}
-                        className="w-[120px] h-[75px] p-2 cursor-pointer flex-1 bg-red-400 rounded-md focus:outline-none focus:ring-2 focus:ring-white flex flex-col justify-center items-center"
+                        className="w-[120px] h-[75px] p-2 cursor-pointer flex-1 bg-[#333030] rounded-md focus:outline-none focus:ring-2 focus:ring-white flex flex-col justify-center items-center"
                       >
                         <Icon />
-                        <h2 className="font-bold text-[16px]">{obj.title}</h2>
+                        <h2 className="font-bold text-[16px] text-white">
+                          {obj.title}
+                        </h2>
                       </button>
                     )
                   })}

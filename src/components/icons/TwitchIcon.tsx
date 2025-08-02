@@ -21,7 +21,7 @@ export const TwitchIcon = () => {
         <g
           id="Dribbble-Light-Preview"
           transform="translate(-141.000000, -7399.000000)"
-          fill="#000000"
+          fill="#FFF"
         >
           <g id="icons" transform="translate(56.000000, 160.000000)">
             <path

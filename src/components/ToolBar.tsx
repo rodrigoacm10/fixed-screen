@@ -4,7 +4,7 @@ export const ToolBar = () => {
   const appWindow = getCurrentWindow()
 
   return (
-    <div className="fixed top-0 left-0 right-0 h-[30px] bg-black/75  select-none grid grid-cols-[auto_max-content]">
+    <div className="fixed top-0 left-0 right-0 h-[30px] select-none grid grid-cols-[auto_max-content]">
       <div data-tauri-drag-region></div>
       <div className="flex">
         <button
