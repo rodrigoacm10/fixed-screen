@@ -15,7 +15,7 @@ async fn create_window(app: tauri::AppHandle, params: String) {
         .duration_since(UNIX_EPOCH)
         .unwrap()
         .as_millis();
-    let label = format!("viewer-{}", timestamp); // <== use "viewer-" como prefixo
+    let label = format!("viewer-{}", timestamp);  
 
     tauri::WebviewWindowBuilder::new(&app, &label, tauri::WebviewUrl::App(url.into()))
         .title("Viewer")
@@ -31,10 +31,9 @@ fn open_app(app: AppHandle) {
     let label = "main";
 
     if let Some(window) = app.get_webview_window(label) {
-        // Se a janela já existe, garantir que ela apareça
-        let _ = window.show();        // mostra caso esteja invisível
-        let _ = window.unminimize();  // desfaz a minimização
-        let _ = window.set_focus();   // foca na janela
+        let _ = window.show();        
+        let _ = window.unminimize();   
+        let _ = window.set_focus();    
         return;
     }
 
