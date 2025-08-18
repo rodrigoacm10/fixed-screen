@@ -15,7 +15,7 @@ async function setupTray() {
       {
         id: 'quit',
         text: 'Quit',
-        action: () => invoke('exit_app'), // <- FECHAR APP
+        action: () => invoke('exit_app'),
       },
     ],
   })
@@ -23,7 +23,7 @@ async function setupTray() {
   const options = {
     menu,
     menuOnLeftClick: true,
-    icon: '../src-tauri/icons/32x32.png',
+    icon: '../src-tauri/icons/fixed.svg',
     action: async (event: TrayIconEvent) => {
       switch (event.type) {
         case 'Click':

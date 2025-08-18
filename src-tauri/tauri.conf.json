@@ -1,7 +1,7 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
   "productName": "fixed-screen",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "identifier": "com.fixed-screen.app",
   "build": {
     "beforeDevCommand": "npm run dev",
@@ -31,11 +31,11 @@
     "active": true,
     "targets": "all",
     "icon": [
-      "icons/32x32.png",
-      "icons/128x128.png",
-      "icons/128x128@2x.png",
-      "icons/icon.icns",
-      "icons/icon.ico"
+      "icons/fixed_32x32.png",
+      "icons/fixed_128x128.png",
+      "icons/fixed_128x128.png",
+      "icons/fixed_32x32.icns",
+      "icons/fixed_32x32.ico"
     ]
   }
 }
