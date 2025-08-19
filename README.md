@@ -51,7 +51,7 @@ Se quiser rodar o projeto localmente:
 
 ```bash
 # Clone o repositório
-git clone https://github.com/seu-usuario/fixed-screen.git
+git clone https://github.com/rodrigoacm10/fixed-screen.git
 cd fixed-screen
 
 # Instale as dependências
